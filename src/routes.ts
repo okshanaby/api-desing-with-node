@@ -1,4 +1,25 @@
 import { Router } from "express";
+// import { body, validationResult } from "express-validator";
+// router.put(
+//   "/product/:id",
+//   body("name").isString().withMessage("Enter a product name"),
+//   (req, res) => {
+//     const errors = validationResult(req);
+
+//     if (!errors.isEmpty()) {
+//       res.status(400);
+//       res.json({ errors: errors.array() });
+//     }
+//   }
+// );
+
+import { z } from "zod";
+
+const updateProductSchema = z.object({
+  name: z.string({ required_error: "Enter product name" }),
+  // password: z.string({ required_error: 'Password is required' })
+  // .min(6, 'Password must be at least 6 characters long'),
+});
 
 const router = Router();
 
@@ -8,7 +29,16 @@ router.get("/product", (req, res) => {
 });
 router.post("/product", (req, res) => {});
 router.get("/product/:id", (req, res) => {});
-router.put("/product/:id", (req, res) => {});
+
+router.put("/product/:id", (req, res) => {
+  const results = updateProductSchema.safeParse(req.body);
+
+  if (!results.success) {
+    res.status(400);
+    res.json({ errors: results.error.errors });
+  }
+});
+
 router.delete("/product/:id", (req, res) => {});
 
 // UPDATE ROUTES
