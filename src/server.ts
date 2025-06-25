@@ -26,16 +26,19 @@ app.use(express.urlencoded({ extended: true })); // middleware for url params/qu
 // app.use(customLogger('Okshan'))
 
 app.get("/", (req, res) => {
-  console.log("Express API");
-
-  res.status(200);
-  // res.json({ message: "Hello from the server " + req.body });
-  res.json({ message: "Hello from the server " });
+  throw new Error("Hello error");
 });
 
 app.use("/api", protectedRoute, router);
 
 app.post("/signup", createUser);
 app.post("/signin", signIn);
+
+// global error handler
+app.use((error, req, res, next) => {
+  console.log(error);
+
+  res.json({ message: "OPPPPSSSS" });
+});
 
 export default app;
