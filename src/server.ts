@@ -16,13 +16,13 @@ app.use(express.urlencoded({ extended: true })); // middleware for url params/qu
 //   next();
 // });
 
-const customLogger = message => (req, res, next) => {
-  console.log(`Hello from my loger ${message}`)
+// const customLogger = message => (req, res, next) => {
+//   console.log(`Hello from my loger ${message}`)
 
-  next();
-};
+//   next();
+// };
 
-app.use(customLogger('Okshan'))
+// app.use(customLogger('Okshan'))
 
 app.get("/", (req, res) => {
   console.log("Express API");

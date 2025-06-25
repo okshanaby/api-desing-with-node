@@ -4,6 +4,9 @@
     "outDir": "dist",
     "lib": ["ESNext"],
     "esModuleInterop": true,
-    // "strict": true,
-  }
+    // "strict": false
+    // This line is required for custom types
+    "typeRoots": ["./types", "./node_modules/@types"]
+  },
+  "include": ["src", "types"]
 }
