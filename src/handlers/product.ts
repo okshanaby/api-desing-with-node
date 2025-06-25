@@ -65,5 +65,5 @@ export const deleteProductById = async (req, res) => {
     },
   });
 
-  res.json({ data: deleted });
+  res.json({ data: null, message: 'Deleted' });
 };

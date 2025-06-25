@@ -13,7 +13,14 @@ import { Router } from "express";
 //   }
 // );
 
-import { createProduct, getAllProducts } from "./handlers/product";
+import {
+  createProduct,
+  deleteProductById,
+  getAllProducts,
+  getProductById,
+  updateProductById,
+} from "./handlers/product";
+import { getAllUpdates } from "./handlers/update";
 import {
   postProductSchema,
   postUpdatePointSchema,
@@ -28,19 +35,17 @@ const router = Router();
 
 // PRODUCT ROUTES
 router.get("/product", getAllProducts);
-
 router.post("/product", inputValidator(postProductSchema), createProduct);
-
-router.get("/product/:id", (req, res) => {});
-
-router.put("/product/:id", inputValidator(updateProductSchema), (req, res) => {
-  res.json({ message: "PUT UPDATE PRODUCT handler" });
-});
-
-router.delete("/product/:id", (req, res) => {});
+router.get("/product/:id", getProductById);
+router.put(
+  "/product/:id",
+  inputValidator(updateProductSchema),
+  updateProductById
+);
+router.delete("/product/:id", deleteProductById);
 
 // UPDATE ROUTES
-router.get("/update", (req, res) => {});
+router.get("/update", getAllUpdates);
 router.post("/update", inputValidator(postUpdateSchema), (req, res) => {
   res.json({ message: "POST CREATE UPDATE handler" });
 });
