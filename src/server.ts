@@ -25,8 +25,10 @@ app.use(express.urlencoded({ extended: true })); // middleware for url params/qu
 
 // app.use(customLogger('Okshan'))
 
-app.get("/", (req, res) => {
-  throw new Error("Hello error");
+app.get("/", (req, res, next) => {
+  setTimeout(() => {
+    next(new Error("Hello error"));
+  }, 5000);
 });
 
 app.use("/api", protectedRoute, router);
