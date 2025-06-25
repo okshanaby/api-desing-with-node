@@ -13,6 +13,7 @@ import { Router } from "express";
 //   }
 // );
 
+import { createProduct, getAllProducts } from "./handlers/product";
 import {
   postProductSchema,
   postUpdatePointSchema,
@@ -26,13 +27,9 @@ import { inputValidator } from "./middleware";
 const router = Router();
 
 // PRODUCT ROUTES
-router.get("/product", (req, res) => {
-  res.json({ message: "Hello from router" });
-});
+router.get("/product", getAllProducts);
 
-router.post("/product", inputValidator(postProductSchema), (req, res) => {
-  res.json({ message: "POST CREATE PRODUCT handler" });
-});
+router.post("/product", inputValidator(postProductSchema), createProduct);
 
 router.get("/product/:id", (req, res) => {});
 
