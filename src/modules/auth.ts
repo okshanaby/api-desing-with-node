@@ -1,3 +1,4 @@
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const createToken = user => {
@@ -44,4 +45,12 @@ export const protectedRoute = (
     res.json({ message: "Not authorized" });
     return;
   }
+};
+
+export const comparePassword = (password, hashed) => {
+  return bcrypt.compare(password, hashed);
+};
+
+export const hashPassword = password => {
+  return bcrypt.hash(password, 5);
 };
