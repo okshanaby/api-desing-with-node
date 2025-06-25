@@ -42,7 +42,7 @@ export const protectedRoute = (
     console.log("🚀 ~ error:", error);
 
     res.status(401);
-    res.json({ message: "Not authorized" });
+    res.json({ message: "Invalid token" });
     return;
   }
 };
