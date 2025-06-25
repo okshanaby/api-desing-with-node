@@ -1,6 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import router from "./routes";
+import { protectedRoute } from "./modules/auth";
 
 const app = express();
 
@@ -31,6 +32,6 @@ app.get("/", (req, res) => {
   res.json({ message: "Hello from the server " });
 });
 
-app.use("/api", router);
+app.use("/api", protectedRoute, router);
 
 export default app;
