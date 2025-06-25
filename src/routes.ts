@@ -20,7 +20,13 @@ import {
   getProductById,
   updateProductById,
 } from "./handlers/product";
-import { getAllUpdates } from "./handlers/update";
+import {
+  createUpdate,
+  deleteUpdate,
+  getAllUpdates,
+  getUpdateById,
+  updateUpdate,
+} from "./handlers/update";
 import {
   postProductSchema,
   postUpdatePointSchema,
@@ -46,16 +52,10 @@ router.delete("/product/:id", deleteProductById);
 
 // UPDATE ROUTES
 router.get("/update", getAllUpdates);
-router.post("/update", inputValidator(postUpdateSchema), (req, res) => {
-  res.json({ message: "POST CREATE UPDATE handler" });
-});
-router.get("/update/:id", (req, res) => {});
-
-router.put("/update/:id", inputValidator(updateUpdateSchema), (req, res) => {
-  res.json({ message: "PUT UPDATE UPDATE handler" });
-});
-
-router.delete("/update/:id", (req, res) => {});
+router.post("/update", inputValidator(postUpdateSchema), createUpdate);
+router.get("/update/:id", getUpdateById);
+router.put("/update/:id", inputValidator(updateUpdateSchema), updateUpdate);
+router.delete("/update/:id", deleteUpdate);
 
 // UPDATEPOINT ROUTES
 router.get("/updatepoint", (req, res) => {});

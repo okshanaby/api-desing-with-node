@@ -26,6 +26,7 @@ export const updateUpdateSchema = z.object({
 export const postUpdateSchema = z.object({
   title: z.string({ required_error: "Enter update title" }),
   body: z.string({ required_error: "Enter update body" }),
+  productId: z.string({ required_error: "Enter update productId" }),
   version: z.string().optional(),
 });
 
