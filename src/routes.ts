@@ -35,7 +35,7 @@ import {
   updateUpdatePointSchema,
   updateUpdateSchema,
 } from "./inputSchemas";
-import { inputValidator } from "./middleware";
+import { globalErrorHandler, inputValidator } from "./middleware";
 
 const router = Router();
 
@@ -75,5 +75,8 @@ router.put(
   }
 );
 router.delete("/updatepoint/:id", (req, res) => {});
+
+// router.use(globalErrorHandler);
+
 
 export default router;

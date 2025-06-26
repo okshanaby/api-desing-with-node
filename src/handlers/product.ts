@@ -30,15 +30,19 @@ export const getProductById = async (req, res) => {
 };
 
 // CREATE PRODUCT
-export const createProduct = async (req, res) => {
-  const newProduct = await prisma.product.create({
-    data: {
-      name: req.body.name,
-      belongsToId: req.user.id,
-    },
-  });
+export const createProduct = async (req, res, next) => {
+  try {
+    const newProduct = await prisma.product.create({
+      data: {
+        name: req.body.name,
+        belongsToId: req.user.id,
+      },
+    });
 
-  res.json({ data: newProduct });
+    res.json({ data: newProduct });
+  } catch (error) {
+    next(error);
+  }
 };
 
 // UPDATE PRODUCT By ID
@@ -65,5 +69,5 @@ export const deleteProductById = async (req, res) => {
     },
   });
 
-  res.json({ data: null, message: 'Deleted' });
+  res.json({ data: null, message: "Deleted" });
 };

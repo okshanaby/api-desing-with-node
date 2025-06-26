@@ -16,6 +16,16 @@ enum Status {
   DEPRECATED = "DEPRECATED",
 }
 
+export const createUserSchema = z.object({
+  username: z.string(),
+  password: z.string(),
+});
+
+export const signInUserSchema = z.object({
+  username: z.string(),
+  password: z.string(),
+});
+
 export const updateUpdateSchema = z.object({
   title: z.string().optional(),
   body: z.string().optional(),
