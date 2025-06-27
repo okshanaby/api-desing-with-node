@@ -13,12 +13,12 @@
 // server.listen(3001, () => {
 //   console.log("Server is running on http://localhost:3001");
 // });
+import * as dotenv from "dotenv";
+import config from "./config";
+dotenv.config();
 
-import * as dotenv from 'dotenv';
-dotenv.config()
+import app from "./server";
 
-import app from './server'
-
-app.listen(3001, () => {
-  console.log("Server is running on http://localhost:3001");
+app.listen(config.port, () => {
+  console.log(`Server is running on http://localhost:${config.port}`);
 });

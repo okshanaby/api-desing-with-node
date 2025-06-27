@@ -1,8 +1,11 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// You cannot import JavaScript/TypeScript config files directly in a Prisma schema.
+// Prisma schema only supports static configuration and environment variables.
+
+// To use custom environment variables, set them in your environment before running Prisma commands.
+// For example, you can set DATABASE_URL in your shell or via a config loader in your scripts.
 
 generator client {
   provider = "prisma-client-js"
