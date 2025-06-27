@@ -2,4 +2,4 @@
 /src/generated/prisma
 /dist
 
-.env
+config.bat
