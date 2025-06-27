@@ -1,3 +1,5 @@
+process.env.NODE_ENV = "production";
+
 const productionConfig = {
   port: 5001,
   secrets: {

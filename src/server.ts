@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import config from "./config";
 import { createUser, signIn } from "./handlers/user";
 import { createUserSchema, signInUserSchema } from "./inputSchemas";
 import { globalErrorHandler, inputValidator } from "./middleware";
@@ -27,12 +28,11 @@ app.use(express.urlencoded({ extended: true })); // middleware for url params/qu
 
 // app.use(customLogger('Okshan'))
 
-
 app.get("/", (req, res, next) => {
-  console.log(process.env.NODE_ENV)
-  setTimeout(() => {
-    next(new Error("Hello error"));
-  }, 5000);
+  console.log(process.env.NODE_ENV);
+  console.log(config.env);
+
+  res.json({ message: "Hello" });
 });
 
 app.use("/api", protectedRoute, router);
