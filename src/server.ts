@@ -27,7 +27,9 @@ app.use(express.urlencoded({ extended: true })); // middleware for url params/qu
 
 // app.use(customLogger('Okshan'))
 
+
 app.get("/", (req, res, next) => {
+  console.log(process.env.NODE_ENV)
   setTimeout(() => {
     next(new Error("Hello error"));
   }, 5000);
